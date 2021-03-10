@@ -1,8 +1,4 @@
-Project
-
 Projet 7 du parcours Web d'Openclassrooms
-
-Getting Started
 
 Les instructions pour lancer le projet sur votre ordinateur local
 Pré-requis
