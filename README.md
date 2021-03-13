@@ -34,4 +34,4 @@ Installation
     
     UPDATE `groupomania`.`users` SET `role` = '1' WHERE (`id` = 'xxx*');
     
-    xxx* étant l'id de l'utilisateur auquel nous voulons attribuer les droits d'administration.
+    xxx* étant l'id de l'utilisateur auquel nous voulons attribuer les droits d'administrations.
