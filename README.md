@@ -30,7 +30,7 @@ Installation
     Rendez-vous à l'adresse http://localhost:8080 sur votre navigateur préféré.
     
     Afin d'attribuer les droits d'administration à un utilisateur, 
-    éeecuter cette commande SQL via un outil tel que MySQLWorkBench ou PHPmyAdmin :
+    executer cette commande SQL via un outil tel que MySQLWorkBench ou PHPmyAdmin :
     
     UPDATE `groupomania`.`users` SET `role` = '1' WHERE (`id` = 'xxx*');
     
