@@ -29,7 +29,9 @@
         </template>
         <v-list>
           <v-list-item link>
+            <router-link tag="div" to="/account" style="text-decoration: none;">
             <v-list-item-title v-text="'Mon compte'"></v-list-item-title>
+            </router-link>
           </v-list-item>
           <v-list-item link>
             <v-list-item-title v-text="'Se déconnecter'" @click="logout"></v-list-item-title>
@@ -57,7 +59,7 @@ export default {
   methods: {
     navbar() {
       
-      if(this.$route.name == 'Wall') {
+      if(this.$route.name == 'Wall' || this.$route.name == 'Account') {
         this.appbar = true
       } else {
         this.appbar = false
@@ -67,6 +69,7 @@ export default {
     logout() {
       localStorage.removeItem('token')
       sessionStorage.removeItem('userId')
+      sessionStorage.removeItem('userRole')
       this.$router.replace('/login')
     }
   },
