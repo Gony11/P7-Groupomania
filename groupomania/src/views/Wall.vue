@@ -17,7 +17,7 @@
                                 <div class="text-subtitle-2 secondary-text">{{post.user.firstname}} {{post.user.name}}</div>
                                 <div class="text-caption secondary-text">le {{new Date(post.created_at).toLocaleDateString('fr-FR')}}</div>
                             </v-col>
-                            <v-menu v-if="post.user.id == user" rounded transition="scale-transition" origin="top right" left z-index="0">
+                            <v-menu v-if="post.user.id == user.id || user.role == 1" rounded transition="scale-transition" origin="top right" left z-index="0">
                                 <template v-slot:activator="{ on }">
                                 <v-btn color="primary" icon v-on="on">
                                     <v-icon color="primary">more_vert</v-icon>
@@ -187,8 +187,9 @@ export default {
    
                 api().get('posts')
                 .then(response => {
-                    this.posts = response.data
-                    this.user = sessionStorage.getItem('userId')
+                    this.posts = response.data.filter(post => post.user)
+                    this.user.id = sessionStorage.getItem('userId')
+                    this.user.role = sessionStorage.getItem('userRole')
                     })
                 .catch(() => {
                     localStorage.removeItem('token');
@@ -206,25 +207,6 @@ export default {
 
             api().post('posts', formData)
                 .then(() => {
-                    // this.posts.splice(0, 0, {
-                    //     content: this.contentPost,
-                    //     created_at: new Date(),
-                    //     id: '',
-                    //     like: 0,
-                    //     media: null,
-                    //     user: {
-                    //         email: 'test',
-                    //         firstname: 'test',
-                    //         function: null,
-                    //         id: 4,
-                    //         name: 'test',
-                    //         password: '',
-                    //         role: 0,
-                    //         url_image: null,
-                    //     },
-                    //     userId: 4,
-                    //     visible: false,
-                    // })
 
                     this.initPosts()
 
@@ -297,6 +279,7 @@ export default {
             }
         }
     },
+
     created() {
         this.initPosts()
     }

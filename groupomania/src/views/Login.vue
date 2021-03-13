@@ -52,8 +52,10 @@ export default {
                 password: this.password
             })
                 .then(response => {
+                    console.log(response.data.user);
                     localStorage.setItem('token', response.data.token)
                     sessionStorage.setItem('userId', response.data.user.id)
+                    sessionStorage.setItem('userRole', response.data.user.role)
                     this.$router.replace('/');
                     })
                 .catch(error => {
